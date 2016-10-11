@@ -13,6 +13,20 @@ let client = new Twitter({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 })
 
+function setTwitterStream(win) {
+  // Set timelilne for retrieving hashtag
+  client.stream('statuses/filter', {track: hashTag}, function(stream) {
+    stream.on('data', function(tweet) {
+      win.webContents.send('tweet', tweet.text);
+      console.log(tweet.text);
+    });
+    // Handle errors
+    stream.on('error', function (error) {
+      console.log(error);
+    });
+  });
+}
+
 
 function createWindow () {
   // Create the browser window.
@@ -30,19 +44,8 @@ function createWindow () {
 
   win.setIgnoreMouseEvents(true);
   win.setAlwaysOnTop(true);
-  win.loadURL(`file://${__dirname}/index.html`)
-
-  // Set timelilne for retrieving hashtag
-  client.stream('statuses/filter', {track: hashTag}, function(stream) {
-    stream.on('data', function(tweet) {
-      win.webContents.send('tweet', tweet.text);
-      console.log(tweet.text);
-    });
-    // Handle errors
-    stream.on('error', function (error) {
-      console.log(error);
-    });
-  });
+  win.loadURL(`file://${__dirname}/index.html`);
+  setTwitterStream(win);
 
   // Emitted when the window is closed.
   win.on('closed', () => {

@@ -3,38 +3,26 @@
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
-    <style>
-      html {
-        height: 100%;
-        width: 100%
-      }
-      body {
-        margin: 0;
-        height: 100%;
-        width: 100%;
-        /* background-color: rgba(0, 0, 0, 0.0); */
-      }
-      canvas {
-        height: 100%;
-        width: 100%;
-      }
-      .shoot {
-        -webkit-animation-name: shooting;
-        -webkit-animation-duration: 20s;
-        -webkit-animation-fill-mode: forwards;
-        -webkit-animation-text-indent: linear;
-
-        color: #fff;
-        font-size: 30px;
-      }
-      @-webkit-keyframes shooting {
-        0%   { -webkit-transform:  translate(100%, 100px);}
-        100%   { -webkit-transform:  translate(-100%, 100px);}
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <ul id="tweets"></ul>
+    <canvas id="tweetsCanvas"></canvas>
   </body>
   <script type="text/javascript" src="front.js"></script>
+  <script>
+    var canvas = document.getElementById("tweetsCanvas");
+    const main = new Main(canvas);
+
+    ipcRenderer.on('tweet', function(event, args) {
+      var tweet = new Tweet(args);
+      main.pushTweet(tweet);
+      event.sender.send('tweet-reply', 'pong');  // 送信元へレスポンスを返す
+    });
+
+    function loop() {
+      main.draw();
+      window.requestAnimationFrame(loop);
+    }
+    loop();
+  </script>
 </html>
