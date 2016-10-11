@@ -19,10 +19,19 @@
         height: 100%;
         width: 100%;
       }
+      .shoot {
+        -webkit-animation-name: shooting;
+        -webkit-animation-duration: 20s;
+        -webkit-animation-fill-mode: forwards;
+        -webkit-animation-text-indent: linear;
+      }
+      @-webkit-keyframes shooting {
+        0%   { -webkit-transform:  translate(100%, 100px);}
+        100%   { -webkit-transform:  translate(-100%, 100px);}
+      }
     </style>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    <h1 style="float: right;">Hello World!</h1>
+    <h1 class="shoot">Hello World!</h1>
   </body>
 </html>
