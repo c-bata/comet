@@ -23,19 +23,13 @@ class Main {
     constructor(canvas, devicePixelRatio) {
         this.tweetList = [];
         this.canvas = canvas;
+        // These are not canvas.width and canvas.height;
+        this.canvas.width = window.parent.screen.width;
+        this.canvas.height = window.parent.screen.height;
+
         this.ctx = canvas.getContext('2d');
         this.ctx.fillStyle = 'white';
-
-        // These are not canvas.width and canvas.height;
-        const width = window.parent.screen.width;
-        const height = window.parent.screen.height;
-
-        this.canvas.width = Math.round(width * devicePixelRatio);
-        this.canvas.height = Math.round(height * devicePixelRatio);
-
-        this.canvas.style.width = width + "px";
-        this.canvas.style.height = height + "px";
-        this.ctx.scale(devicePixelRatio, devicePixelRatio);
+        this.ctx.font = "30px 'Times New Roman'";
     }
 
     pushTweet(tweet) {
