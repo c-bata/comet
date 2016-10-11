@@ -20,11 +20,22 @@ class Tweet {
 }
 
 class Main {
-    constructor(canvas) {
+    constructor(canvas, devicePixelRatio) {
         this.tweetList = [];
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.ctx.fillStyle = 'white';
+
+        // These are not canvas.width and canvas.height;
+        const width = window.parent.screen.width;
+        const height = window.parent.screen.height;
+
+        this.canvas.width = Math.round(width * devicePixelRatio);
+        this.canvas.height = Math.round(height * devicePixelRatio);
+
+        this.canvas.style.width = width + "px";
+        this.canvas.style.height = height + "px";
+        this.ctx.scale(devicePixelRatio, devicePixelRatio);
     }
 
     pushTweet(tweet) {
