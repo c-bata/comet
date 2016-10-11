@@ -1,0 +1,27 @@
+{
+  "name": "electron-shooting-tweets",
+  "version": "0.0.1",
+  "description": "Shooting tweets by Electron",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "electron": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/c-bata/electron-shooting-tweets.git"
+  },
+  "keywords": [
+    "electron",
+    "twitter"
+  ],
+  "author": "c-bata",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/c-bata/electron-shooting-tweets/issues"
+  },
+  "homepage": "https://github.com/c-bata/electron-shooting-tweets#readme",
+  "dependencies": {
+    "electron-prebuilt": "^1.4.3"
+  }
+}
