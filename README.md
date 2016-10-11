@@ -1,5 +1,9 @@
-# electron-shooting-tweets
-Shooting tweets timeline for Desktop.
+# Shooting Tweets
+
+NicoNico style tweet viewer for Desktop.
+
+- Show hashtag tweets when you talk at conference.
+- Show your timeline when you are at work.
 
 ![Demo gif animation](./demo.gif)
 
@@ -15,9 +19,10 @@ export TWITTER_ACCESS_TOKEN_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 export TWITTER_ACCESS_TOKEN_SECRET=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-And run:
+And Run:
 
 ```
 $ npm install
 $ npm run electron
 ```
+

@@ -6,7 +6,7 @@ class Tweet {
         this.text = text;
         this.y = Math.random() * canvas.height;
         this.x = canvas.width;
-        this.dx = - 3 - (Math.random() * 10);
+        this.dx = - 2 - (Math.random() * 5);
     }
 
     isDelete(ctx) {

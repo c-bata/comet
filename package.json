@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/c-bata/electron-shooting-tweets.git"
+    "url": "git+https://github.com/c-bata/shooting-tweets.git"
   },
   "keywords": [
     "electron",
@@ -18,9 +18,9 @@
   "author": "c-bata",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/c-bata/electron-shooting-tweets/issues"
+    "url": "https://github.com/c-bata/shooting-tweets/issues"
   },
-  "homepage": "https://github.com/c-bata/electron-shooting-tweets#readme",
+  "homepage": "https://github.com/c-bata/shooting-tweets#readme",
   "dependencies": {
     "electron-prebuilt": "^1.4.3",
     "twitter": "^1.4.0"
