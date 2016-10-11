@@ -1,3 +1,4 @@
+const electron = require('electron')
 const {app, BrowserWindow} = require('electron')
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -6,13 +7,21 @@ let win
 
 function createWindow () {
   // Create the browser window.
-  win = new BrowserWindow({width: 800, height: 600})
+  let size = electron.screen.getPrimaryDisplay().size
+  win = new BrowserWindow({
+    left: 0,
+    top: 0,
+    width: size.width,
+    height: size.height,
+    frame: false,
+    show: true,
+    transparent: true,
+    resizable: false
+  });
 
-  // and load the index.html of the app.
+  win.setIgnoreMouseEvents(true);
+  win.setAlwaysOnTop(true);
   win.loadURL(`file://${__dirname}/index.html`)
-
-  // Open the DevTools.
-  win.webContents.openDevTools()
 
   // Emitted when the window is closed.
   win.on('closed', () => {

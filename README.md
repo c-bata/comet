@@ -1,2 +1,2 @@
 # electron-shooting-tweets
-Shooting tweets using Electron
+Shooting tweets timeline by Electron
