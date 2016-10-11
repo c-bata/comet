@@ -17,7 +17,7 @@
     ipcRenderer.on('tweet', function(event, args) {
       var tweet = new Tweet(args);
       main.pushTweet(tweet);
-      event.sender.send('tweet-reply', 'pong');  // 送信元へレスポンスを返す
+      event.sender.send('tweet-reply', 'pong');
     });
 
     function loop() {
