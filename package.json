@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/c-bata/electron-shooting-tweets#readme",
   "dependencies": {
-    "electron-prebuilt": "^1.4.3"
+    "electron-prebuilt": "^1.4.3",
+    "twitter": "^1.4.0"
   }
 }
