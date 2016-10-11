@@ -1,6 +1,8 @@
 # electron-shooting-tweets
 Shooting tweets timeline for Desktop.
 
+![Demo gif animation](./demo.gif)
+
 ## How to work
 
 Set environment variables:
