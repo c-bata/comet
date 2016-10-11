@@ -13,7 +13,6 @@
         height: 100%;
         width: 100%;
         /* background-color: rgba(0, 0, 0, 0.0); */
-        color: #fff;
       }
       canvas {
         height: 100%;
@@ -24,6 +23,9 @@
         -webkit-animation-duration: 20s;
         -webkit-animation-fill-mode: forwards;
         -webkit-animation-text-indent: linear;
+
+        color: #fff;
+        font-size: 30px;
       }
       @-webkit-keyframes shooting {
         0%   { -webkit-transform:  translate(100%, 100px);}
@@ -32,6 +34,7 @@
     </style>
   </head>
   <body>
-    <h1 class="shoot">Hello World!</h1>
+    <ul id="tweets"></ul>
   </body>
+  <script type="text/javascript" src="front.js"></script>
 </html>

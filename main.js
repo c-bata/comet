@@ -1,11 +1,20 @@
 const electron = require('electron')
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, ipcMain} = require('electron')
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
+var Twitter = require('twitter');
+
+// Set up Twitter client
+let hashTag = process.env.HASHTAG
 let win
+let client = new Twitter({
+  consumer_key: process.env.TWITTER_CONSUMER_KEY,
+  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+  access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+})
 
-app.on('ready', () => {
+
+function createWindow () {
   // Create the browser window.
   let size = electron.screen.getPrimaryDisplay().size
   win = new BrowserWindow({
@@ -23,11 +32,25 @@ app.on('ready', () => {
   win.setAlwaysOnTop(true);
   win.loadURL(`file://${__dirname}/index.html`)
 
+  // Set timelilne for retrieving hashtag
+  client.stream('statuses/filter', {track: hashTag}, function(stream) {
+    stream.on('data', function(tweet) {
+      win.webContents.send('tweet', tweet.text);
+      console.log(tweet.text);
+    });
+    // Handle errors
+    stream.on('error', function (error) {
+      console.log(error);
+    });
+  });
+
   // Emitted when the window is closed.
   win.on('closed', () => {
     win = null
   })
-})
+}
+
+app.on('ready', createWindow)
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {

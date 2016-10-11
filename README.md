@@ -1,7 +1,9 @@
 # electron-shooting-tweets
-Shooting tweets timeline by Electron
+Shooting tweets timeline for Desktop.
 
-## Environment Variables
+## How to work
+
+Set environment variables:
 
 ```
 export HASHTAG=#electron
@@ -9,4 +11,10 @@ export TWITTER_CONSUMER_KEY=XXXXXXXXXXXXXXXXXXXXXXXXX
 export TWITTER_CONSUMER_SECRET=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 export TWITTER_ACCESS_TOKEN_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 export TWITTER_ACCESS_TOKEN_SECRET=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```
+
+And run:
+
+```
+$ npm run electron
 ```
