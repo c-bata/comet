@@ -1,5 +1,4 @@
 const {ipcRenderer} = require('electron');
-canvas = document.getElementById('tweetsCanvas');
 
 class Tweet {
     constructor(text) {
@@ -19,8 +18,8 @@ class Tweet {
     }
 }
 
-class Main {
-    constructor(canvas, devicePixelRatio) {
+class CanvasManager {
+    constructor(canvas) {
         this.tweetList = [];
         this.canvas = canvas;
         // These are not canvas.width and canvas.height;
@@ -52,10 +51,10 @@ class Main {
     }
 }
 
-function setIpcRenderer(main) {
+function setIpcRenderer(canvasManager) {
     ipcRenderer.on('tweet', function(event, args) {
         var tweet = new Tweet(args);
-        main.pushTweet(tweet);
+        canvasManager.pushTweet(tweet);
         event.sender.send('tweet-reply', 'pong');
     });
 }

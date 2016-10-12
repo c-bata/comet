@@ -8,15 +8,14 @@
   <body>
     <canvas id="tweetsCanvas"></canvas>
   </body>
-  <script type="text/javascript" src="front.js"></script>
+  <script type="text/javascript" src="renderer.js"></script>
   <script>
-    var canvas = document.getElementById("tweetsCanvas");
-    const devicePixelRatio = window.devicePixelRatio || 1;
-    const main = new Main(canvas, devicePixelRatio);
-    setIpcRenderer(main);
+    const canvas = document.getElementById("tweetsCanvas");
+    const canvasManager = new CanvasManager(canvas);
+    setIpcRenderer(canvasManager);
 
     function loop() {
-      main.draw();
+      canvasManager.draw();
       window.requestAnimationFrame(loop);
     }
     loop();
