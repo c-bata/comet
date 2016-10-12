@@ -1,12 +1,13 @@
 const electron = require('electron')
 const {app, BrowserWindow, Tray, Menu, ipcMain} = require('electron')
 
-var Twitter = require('twitter');
+var Twitter = require('twitter')
 
 // Set up Twitter client
-let hashTag = process.env.HASHTAG;
-let win = null;
-let tray = null;
+let hashTag = process.env.HASHTAG
+let win = null
+let tray = null
+let _twitter_stream = null
 let client = new Twitter({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
@@ -17,27 +18,51 @@ let client = new Twitter({
 function createTray() {
   const tray = new Tray(`${__dirname}/../resource/tray.png`)
   const contextMenu = Menu.buildFromTemplate([
-    {label: 'Item1', type: 'radio'},
-    {label: 'Item2', type: 'radio'},
-    {label: 'Item3', type: 'radio', checked: true},
-    {label: 'Item4', type: 'radio'}
+    {
+      label: 'Settings',
+      click: () => {
+        ipcMain.send('show-settings-dialog')
+      }
+    },
+    {
+      label: 'Start',
+      click: () => {
+          console.log('Start twitter streaming.')
+          startStream(win)
+      }
+    },
+    {
+      label: 'Stop',
+      click: () => {
+        console.log('Stop twitter streaming.')
+        _twitter_stream.destroy()
+      }
+    },
+    {
+      label: 'Quit',
+      click: () => {
+        console.log('Bye!')
+        app.quit()
+      }
+    }
   ])
   tray.setToolTip('This is my application.')
   tray.setContextMenu(contextMenu)
 }
 
-function setTwitterStream(win) {
+function startStream(win) {
   // Set timelilne for retrieving hashtag
   client.stream('statuses/filter', {track: hashTag}, function(stream) {
+    _twitter_stream = stream
     stream.on('data', function(tweet) {
-      win.webContents.send('tweet', tweet.text);
-      console.log(tweet.text);
-    });
+      win.webContents.send('tweet', tweet.text)
+      console.log(tweet.text)
+    })
     // Handle errors
     stream.on('error', function (error) {
-      console.log(error);
-    });
-  });
+      console.log(error)
+    })
+  })
 }
 
 
@@ -53,12 +78,11 @@ function createWindow () {
     show: true,
     transparent: true,
     resizable: false
-  });
+  })
 
-  win.setIgnoreMouseEvents(true);
-  win.setAlwaysOnTop(true);
-  win.loadURL(`file://${__dirname}/index.html`);
-  setTwitterStream(win);
+  win.setIgnoreMouseEvents(true)
+  win.setAlwaysOnTop(true)
+  win.loadURL(`file://${__dirname}/index.html`)
 
   // Emitted when the window is closed.
   win.on('closed', () => {
