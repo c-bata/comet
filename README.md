@@ -5,7 +5,7 @@ NicoNico style tweet viewer for Desktop.
 - Show hashtag tweets when you talk at conference.
 - Show your timeline when you are at work.
 
-![Demo gif animation](./demo.gif)
+![Demo gif animation](./resource/demo.gif)
 
 ## How to work
 
@@ -26,3 +26,6 @@ $ npm install
 $ npm run electron
 ```
 
+## License
+
+MIT @ [Masashi Shibata](http://c-bata.link)
