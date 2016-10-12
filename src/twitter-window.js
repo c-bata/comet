@@ -19,7 +19,7 @@ function createWindow () {
 
     win.setIgnoreMouseEvents(true)
     win.setAlwaysOnTop(true)
-    win.loadURL(`file://${__dirname}/index.html`)
+    win.loadURL(`file://${__dirname}/twitter-stream.html`)
 
     // Emitted when the window is closed.
     win.on('closed', () => {
@@ -33,6 +33,6 @@ function closeWindow () {
 }
 
 module.exports = {
-    createWindow: createWindow,
-    closeWindow: closeWindow
+    create: createWindow,
+    close: closeWindow
 }

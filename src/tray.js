@@ -1,27 +1,30 @@
 const {app, Tray, Menu, ipcMain} = require('electron')
 const {startStream, stopStream} = require('./twitter-stream')
-const {createWindow, closeWindow} = require('./twitter-window')
+const TwitterWindow = require('./twitter-window')
+const PreferencesWindow = require('./preferences-window')
 
 let trayTemplate = [
     {
-        label: 'Settings',
+        label: 'Preferences...',
+        accelerator: 'Command+,',
         click: () => {
-            ipcMain.send('show-settings-dialog')
+            console.log('Open preference window.')
+            PreferencesWindow.create()
         }
     },
     {
         label: 'Start',
         click: () => {
             console.log('Start twitter streaming.')
-            let win = createWindow()
-            startStream(win)
+            let twitterWindow = TwitterWindow.create()
+            startStream(twitterWindow)
         }
     },
     {
         label: 'Stop',
         click: () => {
             console.log('Stop twitter streaming.')
-            closeWindow()
+            TwitterWindow.close()
             stopStream()
         }
     },
