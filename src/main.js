@@ -1,17 +1,30 @@
 const electron = require('electron')
-const {app, BrowserWindow, ipcMain} = require('electron')
+const {app, BrowserWindow, Tray, Menu, ipcMain} = require('electron')
 
 var Twitter = require('twitter');
 
 // Set up Twitter client
-let hashTag = process.env.HASHTAG
-let win
+let hashTag = process.env.HASHTAG;
+let win = null;
+let tray = null;
 let client = new Twitter({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
   access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
-})
+});
+
+function createTray() {
+  const tray = new Tray(`${__dirname}/../resource/tray.png`)
+  const contextMenu = Menu.buildFromTemplate([
+    {label: 'Item1', type: 'radio'},
+    {label: 'Item2', type: 'radio'},
+    {label: 'Item3', type: 'radio', checked: true},
+    {label: 'Item4', type: 'radio'}
+  ])
+  tray.setToolTip('This is my application.')
+  tray.setContextMenu(contextMenu)
+}
 
 function setTwitterStream(win) {
   // Set timelilne for retrieving hashtag
@@ -53,7 +66,10 @@ function createWindow () {
   })
 }
 
-app.on('ready', createWindow)
+app.on('ready', () => {
+  createWindow()
+  createTray()
+})
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
@@ -69,5 +85,6 @@ app.on('activate', () => {
   // dock icon is clicked and there are no other windows open.
   if (win === null) {
     createWindow()
+    createTray()
   }
 })
