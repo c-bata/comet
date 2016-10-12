@@ -28,7 +28,9 @@ class CanvasManager {
 
         this.ctx = canvas.getContext('2d');
         this.ctx.fillStyle = 'white';
-        this.ctx.font = "30px 'Times New Roman'";
+        this.ctx.strokeStyle = 'black';
+        this.ctx.font = "40px 'Sans-serif'";
+        this.ctx.lineWidth = 5;
     }
 
     pushTweet(tweet) {
@@ -45,6 +47,7 @@ class CanvasManager {
                 let tweet = this.tweetList[i];
                 tweet.update();
                 this.tweetList[i] = tweet;
+                this.ctx.strokeText(tweet.text, tweet.x, tweet.y);
                 this.ctx.fillText(tweet.text, tweet.x, tweet.y);
             }
         }
