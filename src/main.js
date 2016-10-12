@@ -3,54 +3,58 @@ const {app, BrowserWindow, Tray, Menu, ipcMain} = require('electron')
 
 var Twitter = require('twitter')
 
-// Set up Twitter client
 let hashTag = process.env.HASHTAG
-let win = null
-let tray = null
+// If use let, this variable cleaned up by runtime(GC).
+var tray = null
+var win = null
+// Set up Twitter client
 let _twitter_stream = null
 let client = new Twitter({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
   access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
-});
+})
+let trayTemplate = [
+  {
+    label: 'Settings',
+    click: () => {
+      ipcMain.send('show-settings-dialog')
+    }
+  },
+  {
+    label: 'Start',
+    click: () => {
+      console.log('Start twitter streaming.')
+      createWindow()
+      startStream()
+    }
+  },
+  {
+    label: 'Stop',
+    click: () => {
+      console.log('Stop twitter streaming.')
+      win.close()
+      _twitter_stream.destroy()
+    }
+  },
+  {
+    label: 'Quit',
+    click: () => {
+      console.log('Bye!')
+      app.quit()
+    }
+  }
+]
 
 function createTray() {
   const tray = new Tray(`${__dirname}/../resource/tray.png`)
-  const contextMenu = Menu.buildFromTemplate([
-    {
-      label: 'Settings',
-      click: () => {
-        ipcMain.send('show-settings-dialog')
-      }
-    },
-    {
-      label: 'Start',
-      click: () => {
-          console.log('Start twitter streaming.')
-          startStream(win)
-      }
-    },
-    {
-      label: 'Stop',
-      click: () => {
-        console.log('Stop twitter streaming.')
-        _twitter_stream.destroy()
-      }
-    },
-    {
-      label: 'Quit',
-      click: () => {
-        console.log('Bye!')
-        app.quit()
-      }
-    }
-  ])
+  const contextMenu = Menu.buildFromTemplate(trayTemplate)
   tray.setToolTip('This is my application.')
   tray.setContextMenu(contextMenu)
 }
 
-function startStream(win) {
+function startStream() {
   // Set timelilne for retrieving hashtag
   client.stream('statuses/filter', {track: hashTag}, function(stream) {
     _twitter_stream = stream
@@ -64,7 +68,6 @@ function startStream(win) {
     })
   })
 }
-
 
 function createWindow () {
   // Create the browser window.
@@ -91,24 +94,18 @@ function createWindow () {
 }
 
 app.on('ready', () => {
-  createWindow()
   createTray()
 })
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
-  // On macOS it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') {
     app.quit()
   }
 })
 
 app.on('activate', () => {
-  // On macOS it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
   if (win === null) {
-    createWindow()
     createTray()
   }
 })
