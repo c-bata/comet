@@ -1,7 +1,7 @@
 {
-  "name": "electron-shooting-tweets",
+  "name": "shooting-tweets",
   "version": "0.0.1",
-  "description": "Shooting tweets by Electron",
+  "description": "NicoNico style tweet viewer for Desktop",
   "main": "src/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -15,7 +15,7 @@
     "electron",
     "twitter"
   ],
-  "author": "c-bata",
+  "author": "c-bata <contact@c-bata.link>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/c-bata/shooting-tweets/issues"
