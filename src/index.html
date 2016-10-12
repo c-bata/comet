@@ -13,12 +13,7 @@
     var canvas = document.getElementById("tweetsCanvas");
     const devicePixelRatio = window.devicePixelRatio || 1;
     const main = new Main(canvas, devicePixelRatio);
-
-    ipcRenderer.on('tweet', function(event, args) {
-      var tweet = new Tweet(args);
-      main.pushTweet(tweet);
-      event.sender.send('tweet-reply', 'pong');
-    });
+    setIpcRenderer(main);
 
     function loop() {
       main.draw();

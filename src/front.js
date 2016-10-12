@@ -52,3 +52,10 @@ class Main {
     }
 }
 
+function setIpcRenderer(main) {
+    ipcRenderer.on('tweet', function(event, args) {
+        var tweet = new Tweet(args);
+        main.pushTweet(tweet);
+        event.sender.send('tweet-reply', 'pong');
+    });
+}
