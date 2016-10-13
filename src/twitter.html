@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="twitter-window.css">
   </head>
   <body>
-    <canvas id="tweetsCanvas"></canvas>
+    <canvas id="tweetCanvas"></canvas>
   </body>
-  <script type="text/javascript" src="renderer.js"></script>
+  <script type="text/javascript" src="tweet-canvas-manager.js"></script>
   <script>
-    const canvas = document.getElementById("tweetsCanvas");
+    const canvas = document.getElementById("tweetCanvas");
     const canvasManager = new CanvasManager(canvas);
     setIpcRenderer(canvasManager);
 

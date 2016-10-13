@@ -19,7 +19,7 @@ function createWindow () {
 
     win.setIgnoreMouseEvents(true)
     win.setAlwaysOnTop(true)
-    win.loadURL(`file://${__dirname}/twitter-stream.html`)
+    win.loadURL(`file://${__dirname}/twitter.html`)
 
     // Emitted when the window is closed.
     win.on('closed', () => {
