@@ -1,0 +1,72 @@
+body {
+    background-color: #eeeeee;
+    font-family: "Helvetica neue",Arial,sans-serif;
+    font-size: 14px;
+}
+
+.container {
+    margin: auto;
+    width: 400px;
+    padding: 10px;
+    background-color: #ffffff;
+}
+
+.preferences-form {
+    flex: 1;
+}
+
+.preferences-form > p {
+    display: flex;
+}
+
+.preferences-form input:not([type=submit]) {
+    flex: 1;
+}
+
+.input-field {
+    background-color: #ddd;
+    padding: 20px;
+    border-left: 1px solid white;
+}
+
+.input-field input {
+    background-color: white;
+    border-radius: 3px;
+    height: 20px;
+    width: 70px;
+}
+
+label {
+    width: 100px;
+    margin-right: 10px;
+    text-align: right;
+}
+
+input, textarea {
+    padding: .3em;
+    border: 1px solid #555555;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: inherit;
+    background-color: #eeeeee;
+}
+
+input[type="submit"] {
+    padding: 3px 10px;
+    background: #555;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+
+input:focus, textarea:focus {
+    outline: none;
+}
+
+small {
+    font-size: 0.8rem;
+    color: #aaaaaa;
+}

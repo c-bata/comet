@@ -1,22 +1,34 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="UTF-8">
     <title>Preferences</title>
     <link rel="stylesheet" type="text/css" href="preferences-window.css">
-  </head>
-  <body>
-    <h1>PREFERENCES</h1>
-    <label for="hashtagInput">HashTag: </label>
-    <input id="hashtagInput" type="text">
-
-    <label for="fontSize">Font Size: </label>
-    <input id="fontSize" type="number">
-
-    <label for="fontColor">Font Color: </label>
-    <input id="fontColor" type="text">
-
-    <label for="strokeColor">Stroke Color: </label>
-    <input id="strokeColor" type="text">
-  </body>
+</head>
+<body>
+    <div class="container">
+        <div class="preferences-form">
+            <p>
+                <label for="hashtagInput">HashTag: </label>
+                <input id="hashtagInput" type="text" placeholder="hash tag..." autofocus>
+            </p>
+            <p>
+                <label for="fontSize">Font Size: </label>
+                <input id="fontSize" type="number">
+            </p>
+            <p>
+                <label for="fontColor">Font Color: </label>
+                <input id="fontColor" type="text" placeholder="font color">
+            </p>
+            <p>
+                <label for="strokeColor">Stroke Color: </label>
+                <input id="strokeColor" type="text" placeholder="stroke color">
+            </p>
+            <p><small>Thank you for using shooting-tweets!</small></p>
+            <p>
+                <input type="submit" value="Save!">
+            </p>
+        </div>
+    </div>
+</body>
 </html>
