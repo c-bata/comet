@@ -7,7 +7,7 @@ NicoNico style tweet viewer for Desktop.
 
 ![Demo gif animation](./resource/demo.gif)
 
-## How to work
+## How to run
 
 Set environment variables:
 
