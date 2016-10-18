@@ -1,4 +1,4 @@
-# Shooting Tweets
+![TITLE LOGO](./resource/title-bar.png)
 
 NicoNico style tweet viewer for Desktop.
 
