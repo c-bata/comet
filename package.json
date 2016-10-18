@@ -1,5 +1,5 @@
 {
-  "name": "shooting-tweets",
+  "name": "comet",
   "version": "0.0.1",
   "description": "NicoNico style tweet viewer for Desktop",
   "main": "src/main.js",
