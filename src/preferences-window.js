@@ -5,9 +5,10 @@ var win = null
 
 function createWindow () {
     win = new BrowserWindow({
-        width: 500,
-        height: 400,
-        resizable: true
+        width: 300,
+        height: 360,
+        resizable: false,
+        titleBarStyle: 'hidden-inset'
     })
     win.loadURL(`file://${__dirname}/preferences.html`)
 

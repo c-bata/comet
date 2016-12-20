@@ -24,5 +24,8 @@
   "dependencies": {
     "electron-prebuilt": "^1.4.3",
     "twitter": "^1.4.0"
+  },
+  "devDependencies": {
+    "photon": "git+https://github.com/connors/photon.git"
   }
 }

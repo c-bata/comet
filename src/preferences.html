@@ -1,35 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Preferences</title>
-    <link rel="stylesheet" type="text/css" href="preferences-window.css">
+  <meta charset="UTF-8">
+  <title>Preferences</title>
+  <link rel="stylesheet" href="../node_modules/photon/dist/css/photon.css">
+  <link rel="stylesheet" type="text/css" href="preferences-window.css">
 </head>
 <body>
-    <div class="container">
-        <p>Preferences for shooting-tweets.</p>
-        <div class="preferences-form">
-            <p>
-                <label for="hashtagInput">HashTag: </label>
-                <input id="hashtagInput" type="text" placeholder="hash tag..." autofocus>
-            </p>
-            <p>
-                <label for="fontSize">Font Size: </label>
-                <input id="fontSize" type="number">
-            </p>
-            <p>
-                <label for="fontColor">Font Color: </label>
-                <input id="fontColor" type="text" placeholder="font color">
-            </p>
-            <p>
-                <label for="strokeColor">Stroke Color: </label>
-                <input id="strokeColor" type="text" placeholder="stroke color">
-            </p>
-            <p><small>Thank you for using shooting-tweets!</small></p>
-            <p>
-                <input type="submit" value="Save!">
-            </p>
-        </div>
+<div class="window">
+  <header class="toolbar toolbar-header">
+    <h1 class="title">Preferences</h1>
+  </header>
+
+  <form class="preferences-form">
+    <div class="form-group">
+      <label>Hash Tag</label>
+      <input type="text" class="form-control" placeholder="Hash Tag">
     </div>
+    <div class="form-group">
+      <label>Font Size</label>
+      <input type="number" class="form-control" placeholder="12">
+    </div>
+
+    <div class="form-group">
+      <label>Font Color</label>
+      <select class="form-control">
+        <option>Black</option>
+        <option>White</option>
+        <option>Blue</option>
+        <option>Red</option>
+        <option>Yellow</option>
+        <option>Green</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Stroke Color</label>
+      <select class="form-control">
+        <option>Black</option>
+        <option>White</option>
+        <option>Blue</option>
+        <option>Red</option>
+        <option>Yellow</option>
+        <option>Green</option>
+      </select>
+    </div>
+  </form>
+
+  <footer class="toolbar toolbar-footer">
+    <div class="toolbar-actions">
+      <button class="btn btn-default">
+        Cancel
+      </button>
+
+      <button class="btn btn-primary pull-right">
+        Save
+      </button>
+    </div>
+  </footer>
+</div>
 </body>
 </html>
