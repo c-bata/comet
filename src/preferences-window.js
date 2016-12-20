@@ -4,22 +4,13 @@ const {BrowserWindow} = require('electron')
 var win = null
 
 function createWindow () {
-    // Create the browser window.
-    let size = electron.screen.getPrimaryDisplay().size
     win = new BrowserWindow({
-        left: 0,
-        top: 0,
-        width: size.width,
-        height: size.height,
-        frame: false,
-        show: true,
-        transparent: true,
-        resizable: false
+        width: 300,
+        height: 360,
+        resizable: false,
+        titleBarStyle: 'hidden-inset'
     })
-
-    win.setIgnoreMouseEvents(true)
-    win.setAlwaysOnTop(true)
-    win.loadURL(`file://${__dirname}/twitter.html`)
+    win.loadURL(`file://${__dirname}/preferences.html`)
 
     // Emitted when the window is closed.
     win.on('closed', () => {
