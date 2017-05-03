@@ -3,7 +3,7 @@ const {BrowserWindow} = require('electron')
 
 var win = null
 
-function createWindow () {
+function createWindow() {
     // Create the browser window.
     let size = electron.screen.getPrimaryDisplay().size
     win = new BrowserWindow({
@@ -28,7 +28,7 @@ function createWindow () {
     return win
 }
 
-function closeWindow () {
+function closeWindow() {
     win.close()
 }
 

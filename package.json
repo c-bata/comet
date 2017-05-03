@@ -24,5 +24,9 @@
   "dependencies": {
     "electron-prebuilt": "^1.4.3",
     "twitter": "^1.4.0"
+  },
+  "devDependencies": {
+    "stylelint": "^7.10.1",
+    "stylelint-config-standard": "^16.0.0"
   }
 }

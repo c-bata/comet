@@ -5,11 +5,11 @@ class Tweet {
         this.text = text;
         this.y = Math.random() * canvas.height;
         this.x = canvas.width;
-        this.dx = - 2 - (Math.random() * 5);
+        this.dx = -2 - (Math.random() * 5);
     }
 
     isDelete(ctx) {
-        let thresholdX = - ctx.measureText(this.text).width;
+        let thresholdX = -ctx.measureText(this.text).width;
         return thresholdX > this.x
     }
 
@@ -55,7 +55,7 @@ class CanvasManager {
 }
 
 function setIpcRenderer(canvasManager) {
-    ipcRenderer.on('tweet', function(event, args) {
+    ipcRenderer.on('tweet', function (event, args) {
         var tweet = new Tweet(args);
         canvasManager.pushTweet(tweet);
         event.sender.send('tweet-reply', 'pong');

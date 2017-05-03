@@ -13,9 +13,9 @@ let client = new Twitter({
 
 function startStream(win) {
     // Set timelilne for retrieving hashtag
-    client.stream('statuses/filter', {track: hashTag}, function(stream) {
+    client.stream('statuses/filter', {track: hashTag}, function (stream) {
         _twitter_stream = stream
-        stream.on('data', function(tweet) {
+        stream.on('data', function (tweet) {
             win.webContents.send('tweet', tweet.text)
             console.log(tweet.text)
         })
