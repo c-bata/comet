@@ -1,23 +1,34 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body>
 <canvas id="tweetsCanvas"></canvas>
 </body>
 <script type="text/javascript" src="renderer.js"></script>
 <script>
     const canvas = document.getElementById("tweetsCanvas");
+    //noinspection ES6ModulesDependencies
     const canvasManager = new CanvasManager(canvas);
     setIpcRenderer(canvasManager);
 
-    function loop() {
-        canvasManager.draw();
-        window.requestAnimationFrame(loop);
+    if (stream_loop_type === 'setTimeout') {
+        function loop() {
+            canvasManager.draw();
+            setTimeout(loop, stream_speed);
+        }
+    } else {
+        function loop() {
+            canvasManager.draw();
+            window.requestAnimationFrame(loop);
+        }
     }
     loop();
 </script>
+
 </html>
