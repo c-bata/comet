@@ -13,7 +13,7 @@ if (crash_report_url !== '') {
     const crashReporter = electron.crashReporter
     crashReporter.start({
         productName: 'comet.app',
-        companyName: 'An individual null',
+        companyName: 'An individual',
         submitURL: crash_report_url,
         autoSubmit: false
     });
