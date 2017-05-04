@@ -1,3 +1,5 @@
+"use strict";
+
 const {ipcRenderer} = require('electron');
 
 class Tweet {
@@ -5,11 +7,12 @@ class Tweet {
         this.text = text;
         this.y = Math.random() * canvas.height;
         this.x = canvas.width;
-        this.dx = - 2 - (Math.random() * 5);
+        this.dx = stream_dx_base - (Math.random() * 5);
+        console.log(stream_dx_base);
     }
 
     isDelete(ctx) {
-        let thresholdX = - ctx.measureText(this.text).width;
+        let thresholdX = -ctx.measureText(this.text).width;
         return thresholdX > this.x
     }
 
@@ -54,10 +57,18 @@ class CanvasManager {
     }
 }
 
+//noinspection JSUnusedLocalSymbols
 function setIpcRenderer(canvasManager) {
-    ipcRenderer.on('tweet', function(event, args) {
+    ipcRenderer.on('tweet', function (event, args) {
         var tweet = new Tweet(args);
         canvasManager.pushTweet(tweet);
         event.sender.send('tweet-reply', 'pong');
     });
 }
+
+//initialize
+let stream_dx_base = parseInt(process.env.STREAM_DX_BASE || '-2');
+//noinspection JSUnusedLocalSymbols
+let stream_speed = process.env.STREAM_SPEED || '100';
+//noinspection JSUnusedLocalSymbols
+let stream_loop_type = process.env.STREAM_LOOP_TYPE || 'setTimeout';

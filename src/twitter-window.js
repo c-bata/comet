@@ -1,11 +1,13 @@
-const electron = require('electron')
-const {BrowserWindow} = require('electron')
+"use strict";
 
-var win = null
+const electron = require('electron');
+const {BrowserWindow} = require('electron');
 
-function createWindow () {
+var win = null;
+
+function createWindow() {
     // Create the browser window.
-    let size = electron.screen.getPrimaryDisplay().size
+    let size = electron.screen.getPrimaryDisplay().size;
     win = new BrowserWindow({
         left: 0,
         top: 0,
@@ -15,24 +17,24 @@ function createWindow () {
         show: true,
         transparent: true,
         resizable: false
-    })
+    });
 
-    win.setIgnoreMouseEvents(true)
-    win.setAlwaysOnTop(true)
-    win.loadURL(`file://${__dirname}/index.html`)
+    win.setIgnoreMouseEvents(true);
+    win.setAlwaysOnTop(true);
+    win.loadURL(`file://${__dirname}/index.html`);
 
     // Emitted when the window is closed.
     win.on('closed', () => {
         win = null
-    })
+    });
     return win
 }
 
-function closeWindow () {
+function closeWindow() {
     win.close()
 }
 
 module.exports = {
     createWindow: createWindow,
     closeWindow: closeWindow
-}
+};
