@@ -8,13 +8,16 @@ const app = electron.app
 const createTray = require('./tray');
 
 // クラッシュレポート
-const crashReporter = electron.crashReporter
-crashReporter.start({
-    productName: 'sample.app',
-    companyName: 'COMPANY',
-    submitURL: 'https://your-domain.com/url-to-submit',
-    autoSubmit: false
-});
+let crash_report_url = process.env.CRASH_REPORT_URL || '';
+if (crash_report_url !== '') {
+    const crashReporter = electron.crashReporter
+    crashReporter.start({
+        productName: 'comet.app',
+        companyName: 'An individual null',
+        submitURL: crash_report_url,
+        autoSubmit: false
+    });
+}
 
 app.on('ready', () => {
     createTray()
