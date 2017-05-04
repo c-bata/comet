@@ -3,8 +3,18 @@
 // .env
 require('dotenv').config();
 
-const {app} = require('electron');
+const electron = require("electron")
+const app = electron.app
 const createTray = require('./tray');
+
+// クラッシュレポート
+const crashReporter = electron.crashReporter
+crashReporter.start({
+    productName: 'sample.app',
+    companyName: 'COMPANY',
+    submitURL: 'https://your-domain.com/url-to-submit',
+    autoSubmit: false
+});
 
 app.on('ready', () => {
     createTray()

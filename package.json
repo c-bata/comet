@@ -23,10 +23,11 @@
   "homepage": "https://github.com/c-bata/shooting-tweets#readme",
   "dependencies": {
     "@slack/client": "git+https://github.com/slackapi/node-slack-sdk.git",
-    "electron-prebuilt": "^1.4.3",
+    "electron": "^1.6.6",
     "twitter": "^1.4.0"
   },
   "devDependencies": {
+    "crashreporter": "^1.1.0",
     "dotenv": "^4.0.0",
     "stylelint": "^7.10.1",
     "stylelint-config-standard": "^16.0.0"
